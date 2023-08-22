@@ -3,6 +3,9 @@ use crate::{
     Error,
 };
 
+/// This is the final representation before the final execution. This is a tree of nodes
+/// representing each operation or literal. This representation is organized based on order of
+/// operations and parentheses.
 #[derive(Debug, PartialEq, Clone)]
 pub enum TreeNode {
     Add(Box<TreeNode>, Box<TreeNode>),

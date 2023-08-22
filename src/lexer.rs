@@ -14,6 +14,8 @@ pub enum LexToken {
     Exponent,
 }
 
+/// A stream of lex tokens. This is a flat reprensentation of the original string. This is
+/// basically the original string but represented using [`LexToken`]s instead of [`char`]s
 #[derive(Debug)]
 pub struct LexTokenStream(pub(crate) Vec<LexToken>);
 

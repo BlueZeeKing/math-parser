@@ -14,6 +14,9 @@ pub enum IntermediateToken {
     Literal(f64),
 }
 
+/// This is one step above the [`LexTokenStream`]. It is still mostly flat except for parentheses.
+/// This representation also disambiguates [`LexToken::Minus`] tokens into either negative signs
+/// (-1 * ...) or true subtraction.
 #[derive(Debug)]
 pub struct IntermediateTokenStream(pub(crate) Vec<IntermediateToken>);
 

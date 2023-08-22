@@ -31,6 +31,14 @@ pub enum Error {
     InvalidStartingNode(IntermediateToken),
 }
 
+/// This function combines all the parsing steps into one function.
+///
+/// # Steps:
+///
+///  1. Parse into a [`LexTokenStream`]
+///  2. Parse into a [`IntermediateTokenStream`]
+///  3. Parse into a [`TreeNode`]
+///  4. Execute
 pub fn parse(input: &str) -> Result<f64, Error> {
     let lex_stream = input.parse::<LexTokenStream>()?;
 
