@@ -40,7 +40,7 @@ fn parse_ir(value: &[IntermediateToken]) -> Result<TreeNode, Error> {
         };
     }
 
-    for (index, token) in value.iter().enumerate() {
+    for (index, token) in value.iter().enumerate().rev() {
         if token == &IntermediateToken::Add {
             return Ok(TreeNode::Add(
                 Box::new(parse_ir(&value[..index])?),
@@ -56,7 +56,7 @@ fn parse_ir(value: &[IntermediateToken]) -> Result<TreeNode, Error> {
         }
     }
 
-    for (index, token) in value.iter().enumerate() {
+    for (index, token) in value.iter().enumerate().rev() {
         if token == &IntermediateToken::Multiply {
             return Ok(TreeNode::Multiply(
                 Box::new(parse_ir(&value[..index])?),
@@ -72,7 +72,7 @@ fn parse_ir(value: &[IntermediateToken]) -> Result<TreeNode, Error> {
         }
     }
 
-    for (index, token) in value.iter().enumerate() {
+    for (index, token) in value.iter().enumerate().rev() {
         if token == &IntermediateToken::Exponent {
             return Ok(TreeNode::Exponent(
                 Box::new(parse_ir(&value[..index])?),

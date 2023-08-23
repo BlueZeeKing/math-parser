@@ -8,7 +8,7 @@ fn main() -> Result<(), Error> {
     let mut input = String::new();
     stdin().read_line(&mut input).unwrap();
 
-    let lex_stream = dbg!(input.parse::<LexTokenStream>()?);
+    let lex_stream = input.parse::<LexTokenStream>()?;
 
     let intermediate_stream: IntermediateTokenStream = dbg!(lex_stream.try_into()?);
 
