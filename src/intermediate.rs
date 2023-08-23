@@ -52,7 +52,13 @@ fn parse_stream_part(
             LexToken::Star => stream.push(IntermediateToken::Multiply),
             LexToken::Slash => stream.push(IntermediateToken::Divide),
             LexToken::Exponent => stream.push(IntermediateToken::Exponent),
-            LexToken::Number(num) => stream.push(IntermediateToken::Literal(*num)),
+            LexToken::Number(num) => {
+                stream.push(IntermediateToken::Literal(*num));
+
+                if *index + 1 < value.len() && value[*index + 1] == LexToken::ParensOpen {
+                    stream.push(IntermediateToken::Multiply);
+                }
+            }
             LexToken::Minus => {
                 if *index == 0
                     || [
